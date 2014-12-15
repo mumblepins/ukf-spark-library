@@ -30,7 +30,7 @@ float T[pts];
 
 UkfLib ukf;
 
-void stateFuc(float *in, float *out)
+void stateFunc(float *in, float *out)
 {
   float dt = (max_time / (float) (pts - 1));
   out[0] = in[0] + (dt * (u + in[1]*(To - in[0]))) / in[2];
