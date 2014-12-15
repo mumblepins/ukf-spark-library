@@ -3,8 +3,8 @@
 
 // Simple example. Solves heating problem.
 
-int n = 3; //number of state variables (temperature, insulation, and thermal mass)
-int pts = 10; // for example, keep # of pts small, in reality this will probably be used on live data, and pts won't be stored
+#define n  3 //number of state variables (temperature, insulation, and thermal mass)
+#define pts  10 // for example, keep # of pts small, in reality this will probably be used on live data, and pts won't be stored
 int m = 1; // number of measurement variables (temp))
 float To = 4; // outside temp
 float Ua = 4; // Insulation value
@@ -30,7 +30,7 @@ float T[pts];
 
 UkfLib ukf;
 
-void stateFunc(float *in, float *out)
+void stateFuc(float *in, float *out)
 {
   float dt = (max_time / (float) (pts - 1));
   out[0] = in[0] + (dt * (u + in[1]*(To - in[0]))) / in[2];
@@ -43,7 +43,7 @@ void measFunc(float *in, float *out)
   out[0] = in[0];
 }
 
-int main()
+void setup()
 {
   Serial.begin(9600);
   while (!Serial.available()) Spark.process();
@@ -65,7 +65,12 @@ int main()
       xV[i * pts + k] = x[i];
     }
   }
-  ukf.Print(xV, 3, pts, "xv");
+  ukf.printArray(xV, 3, pts, "xv");
+
+}
+
+void loop()
+{
 
 }
 
