@@ -1,0 +1,7 @@
+{
+  "name": "ukf-spark-library",
+  "author": "Daniel Sulliavn <mumblepins@gmail.com>",
+  "license": "MIT",
+  "version": "0.0.10",
+  "description": "Unscented Kalman Filter Library for the Spark core"
+}
